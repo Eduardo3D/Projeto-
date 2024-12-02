@@ -1,4 +1,5 @@
 <?php
+
 class UserBanco{
     private $pdo;
 
@@ -8,11 +9,11 @@ class UserBanco{
         $this->pdo = $banco;
     }
 
-    public function cadastrarUsuario($id_usuario,$nome,$senha,$ativo){
-        $sql = "INSERT INTO usuarios(id_usuario,nome,senha,perfil_ativo) values (:u,:n,:p,:a)";
+    public function cadastrarUsuario($nome,$senha,$ativo){
+        $sql = "INSERT INTO usuarios(nome,senha,perfil_ativo) values (:n,:p,:a)";
 
         $comando = $this->pdo->prepare($sql);
-        $comando->bindValue("u",$id_usuario);
+       
         $comando->bindValue("n",$nome);
         $comando->bindValue("p",$senha);
         $comando->bindValue("a",$ativo,PDO::PARAM_BOOL);
@@ -20,11 +21,10 @@ class UserBanco{
         return $comando->execute();
     }
 
-    public function editarUsuario($id_usuario,$nome,$senha,$ativo){
-        $sql = "INSERT INTO usuarios(id_usuario,nome,senha,perfil_ativo) values (:u,:n,:p,:a)";
+    public function editarUsuario($nome,$senha,$ativo){
+        $sql = "INSERT INTO usuarios(nome,senha,perfil_ativo) values (:n,:p,:a)";
 
         $comando = $this->pdo->prepare($sql);
-        $comando->bindValue("u",$id_usuario);
         $comando->bindValue("n",$nome);
         $comando->bindValue("p",$senha);
         $comando->bindValue("a",$ativo,PDO::PARAM_BOOL);
@@ -32,22 +32,21 @@ class UserBanco{
         return $comando->execute();
     }
 
-    public function buscarPorUsername($u){
-        $sql = "SELECT * FROM usuarios WHERE id_usuario=:u";
+    public function buscarPorNome($n){
+        $sql = "SELECT * FROM usuarios WHERE nome=:n";
 
         $comando = $this->pdo->prepare($sql);
-        $comando->bindValue("u",$u);
+        $comando->bindValue("n",$n);
         $comando->execute();
         $resultado = $comando->fetchAll(PDO::FETCH_ASSOC);
 
         return $this->hidratar($resultado);
     }
 
-    public function atualizarUsuario($id_usuario,$nome,$senha,$ativo){
-        $sql = "UPDATE usuarios set id_usuario = :u, nome = :n, senha = :p, perfil_ativo = :a where nome = :u";
+    public function atualizarUsuario($nome,$senha,$ativo){
+        $sql = "UPDATE usuarios set nome = :n, senha = :p, perfil_ativo = :a where nome = :n";
 
         $comando = $this->pdo->prepare($sql);
-        $comando->bindValue("u",$id_usuario);
         $comando->bindValue("n",$nome);
         $comando->bindValue("p",$senha);
         $comando->bindValue("a",$ativo,PDO::PARAM_BOOL);
@@ -56,18 +55,18 @@ class UserBanco{
     }
 
     public function excluirUsuario($nome){
-        $sql = "DELETE FROM usuarios WHERE id_usuario = :u";
+        $sql = "DELETE FROM usuarios WHERE nome = :n";
 
         $comando = $this->pdo->prepare($sql);
-        $comando->bindValue("u",$nome);
+        $comando->bindValue("n",$nome);
 
         return $comando->execute();
     }
 
-    public function verificarSeExiste($id_usuario,$senha){
-        $sql = "SELECT * FROM usuarios WHERE id_usuario=:u and senha = :p and perfil_ativo = TRUE";
+    public function verificarSeExiste($nome,$senha){
+        $sql = "SELECT * FROM usuarios WHERE nome=:n and senha = :p and perfil_ativo = TRUE";
         $comando = $this->pdo->prepare($sql);
-        $comando->bindValue("u",$id_usuario);
+        $comando->bindValue("n",$nome);
         $comando->bindValue("p",$senha);
         $comando->execute();
 
@@ -89,9 +88,8 @@ class UserBanco{
 
         foreach($array as $dado){
             $objeto= new User();
-            $objeto->setUsername($dado['id_usuario']);
             $objeto->setNome($dado['nome']);
-            $objeto->setPassword($dado['senha']);
+            $objeto->setSenha($dado['senha']);
             $objeto->setAtivo($dado['perfil_ativo']);
             $todos[]=$objeto;
         }

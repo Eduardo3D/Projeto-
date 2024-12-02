@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
-    <title>Suporte</title>
+    <title>Criadores</title>
      
     <style>
         .login {
@@ -61,6 +61,22 @@
 
 }
 
+
+.card {
+    margin: 20px;
+  }
+  .card-image img {
+    width: 100%;
+    height: auto;
+  }
+  .card {
+    margin: 20px;
+  }
+  .card-image img {
+    width: 100%;
+    height: auto;
+  }
+
     </style>
 
 </head>
@@ -72,7 +88,12 @@
   <div class="hero-head">
   <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io"></a>
+    <a class="navbar-item" href="https://bulma.io">
+      
+
+    </a>
+
+    
   </div>
 
   <div id="navbarBasicExample" class="navbar-menu">
@@ -127,50 +148,123 @@
 </section>
 
 
-<!-- Login -->
 
-<div class="login">
-    <div class="login-container">
 
-    <div class="field">
-  <label class="label">Digite seu nome:</label>
-  <div class="control">
-  <input  class="color-text"type="text" name="username" placeholder="Username">
+
+
+<div class="columns">
+<div class="column">
+    <div class="card">
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <img
+        src="/img/eduardo.png"
+        alt="Placeholder image"
+      />
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">      
+      </div>
+      <div class="media-content">
+        <p class="title is-4">Eduardo Crevelande</p>
+        <p class="subtitle is-6">RGI61</p>
+      </div>
+    </div>
+
+    <div class="content">
+      Fez a maioria da parte do design e ajudou parcialmente na confecção dos CRUDS.
+      
+      <br>
+      <br>
+      
+    </div>
   </div>
 </div>
+</div>
 
-<div class="field">
-  <label class="label">Digite seu email:</label>
-  <div class="control">
-    <input class="color-text" type="text" placeholder="Email" >
+
+<div class="column">
+    <div class="card">
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <img
+        src="/img/kaua.png"
+        alt="Placeholder image"
+      />
+    </figure>
   </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+         
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4">Kauã Lins</p>
+        <p class="subtitle is-6">RGI61</p>
+      </div>
+    </div>
+
+    <div class="content">
+     Fez grande parte dos CRUDS e ajudou no que podia na parte do design.
+      
+      <br>
+      <br>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+
+<div class="column">
+    <div class="card">
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <img
+        src="/img/vitor.png"
+        alt="Placeholder image"
+      />
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        
+      </div>
+      <div class="media-content">
+        <p class="title is-4">Vitor Gomes</p>
+        <p class="subtitle is-6">RGI61</p>
+      </div>
+    </div>
+
+    <div class="content">
+     Ajudou na parte dos CRUDS e fez um box com texto e botão.
+      
+      <br>
+      <br>
+      
+    </div>
+  </div>
+</div>
+</div>
+
 
 </div>
 
-<div class="field">
-  <label class="label">Diga a sua dúvida:</label>
-  <div class="control">
-    <input class="color-text" type="password" name="password" placeholder="Password">
-  </div>
-</div>
 
-<div class="field">
-  <div class="control">
-    <label class="checkbox">
-      <input type="checkbox">
-     Conseguimos te ajudar?
-    </label>
-  </div>
-</div>
 
-<div class="field is-grouped">
-  <div class="control">
-    <button class="button is-link" type="submit">Enviar dúvida</button> 
-  </div>
-  <div class="control">
-    <button class="button is-link ">Cancelar</button>
-  </div>
-</div>
+
+
+
+
+
+
+
+
 </div>
 </div>
 <?php require __DIR__ . "/footer.php"; ?>

@@ -1,11 +1,12 @@
 <?php
 
-class ValidarUsuario
+
+class ValidarPagamento
 {
     public function retornar()
     {
 
-        if ($_POST['nome'] == "") {
+        if ($_POST['curso'] == "") {
             $mensagem = '
         <div class="notification is-danger">
             <button class="delete"></button>
@@ -13,7 +14,7 @@ class ValidarUsuario
         </div>';
             die($mensagem);
         }
-        if ($_POST['senha'] == "") {
+        if ($_POST['numerocartao'] == "") {
             $mensagem = '
         <div class="notification is-danger">
             <button class="delete"></button>
@@ -23,7 +24,7 @@ class ValidarUsuario
         }
 
 
-        $alunoExiste = (new UserBanco())->verificarSeExiste($_POST['nome'], $_POST['senha']);
+        $alunoExiste = (new PagamentoBanco())->verificarSeExiste($_POST['curso'], $_POST['numerocartao']);
 
         if (empty($alunoExiste)) {
             die("Este usuário não existe!");

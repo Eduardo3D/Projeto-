@@ -1,4 +1,4 @@
-<ul>
-    <li><a href="./novo-usuario.php">Cadastrar</a></li>
-    <li><a href="./index.php?acao=consultar">Listar</a></li>
-</ul>
+<div class="columns">
+<div class="column"><a class="button is-primary is-fullwidth" href="./novo-usuario.php">Cadastre-se</a></div>
+<div class="column"><a class="button is-primary is-fullwidth" href="./index.php?acao=consultar">Listar</a> </div>
+</div>

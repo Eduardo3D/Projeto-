@@ -1,38 +1,39 @@
 <?php
 
-class ValidarUsuario
+
+class ValidarSuporte
 {
     public function retornar()
     {
 
-        if ($_POST['nome'] == "") {
+        if ($_POST['id_usuario'] == "") {
             $mensagem = '
         <div class="notification is-danger">
             <button class="delete"></button>
-                Usuário vazio
+                id vazio
         </div>';
             die($mensagem);
         }
-        if ($_POST['senha'] == "") {
+        if ($_POST['comentario'] == "") {
             $mensagem = '
         <div class="notification is-danger">
             <button class="delete"></button>
-                Senha vazia
+                comentario vazio
         </div>';
             die($mensagem);
         }
 
 
-        $alunoExiste = (new UserBanco())->verificarSeExiste($_POST['nome'], $_POST['senha']);
+        $suporteExiste = (new AjudaBanco())->verificarSeExiste($_POST['id_usuario'], $_POST['comentario']);
 
-        if (empty($alunoExiste)) {
-            die("Este usuário não existe!");
+        if (empty($suporteExiste)) {
+            die("Mensagem não enviada");
         }
 
         $mensagem = '
     <div class="notification is-success">
         <button class="delete"></button>
-            Usuário logado
+            Mensagem enviada
     </div>';
         echo $mensagem;
     }

@@ -2,69 +2,49 @@
 
 <section class="section">
         <div class="container">
-        <div class="columns is-centered">
-                <div class="column is-half">
-                    <div class="box">
-            <h1 class="title">Formulário de Cadastro</h1>
-            <form action="./index.php?acao=cadastrar" method="POST">
+            <h1 class="title">Formulário de Pagamento</h1>
+            <form action="./index.php?acaopag=cadastrar" method="POST">
                 <div class="field">
-                    <label class="label">Username</label>
+                    <label class="label">Curso</label>
                     <div class="control">
-                        <input class="input" type="text" name="usuario" placeholder="Digite seu username" required>
+                        <input class="input" type="text" name="curso" placeholder="Digite o curso desejado" required>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">Nome completo</label>
+                    <label class="label">preço</label>
                     <div class="control">
-                        <input class="input" type="text" name="nome" placeholder="Digite seu nome" required>
+                        <input class="input" type="text" name="preco" placeholder="Digite o preço" required>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">Password</label>
+                    <label class="label">Número do cartao</label>
                     <div class="control">
-                        <input class="input" type="password" name="senha" placeholder="Digite sua senha" required>
+                        <input class="input" type="text" name="numerocartao" placeholder="Digite o numero do seu cartao" required>
                     </div>
                 </div>
 
-                <p><strong>Está ativo?</strong></p>
+                <p><strong>Preco</strong></p>
                 <div class="radios">
                     <div class="control">
                         <label class="radio">
                             <input type="radio" name="ativo" value="1">
-                           Sim
+                           R$90,00 Á vista
                         </label>
                         <label class="radio">
                             <input type="radio" name="ativo" value="0">
-                           Não
+                           R$90,00 Parcelado
                         </label>
                     </div>
                 </div>
 
                 <div class="field">
                     <div class="control">
-                        <input type="submit" value="Cadastrar" class="button has-backgroun-white">
+                        <button class="button is-primary">Cadastrar</button>
                     </div>
                 </div>
             </form>
         </div>
-</div>
-</div>
-</div>
-</section>
-
-<?php require __DIR__."/footer.php"; ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+        <?php require __DIR__."/footer.php"; ?>

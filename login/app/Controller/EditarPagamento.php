@@ -1,10 +1,11 @@
 <?php
+use PagamentoBanco;
 
-class EditarUsuario
+class EditarPagamento
 {
     public function retornar()
     {
-        $usuario = (new UserBanco)->buscarPorNome($_GET['id']);
+        $pagamento = (new PagamentoBanco)->buscarPorCurso($_GET['id']);
         require __DIR__."/../../editar-usuario.php";
        
         }

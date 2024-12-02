@@ -16,13 +16,13 @@
                 <?php if (isset($usuarios)): ?>
                     <?php foreach ($usuarios as $usuario): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($usuario->getUsername()); ?></td>
                             <td><?php echo htmlspecialchars($usuario->getNome()); ?></td>
-                            <td><?php echo htmlspecialchars($usuario->getPassword()); ?></td>
+                            <td><?php echo htmlspecialchars($usuario->getSenha()); ?></td>
+                            <td><?php echo htmlspecialchars($usuario->getAtivo()); ?></td>
                             <td><?= $usuario->getAtivo() == "1"?"Sim":"Não" ?></td>
                             <td>
-                                <a class="button is-small is-info" href="/index.php?acao=editar&id=<?=$usuario->getUsername()?>">Editar</a>
-                                <a class="button is-small is-danger" href="/index.php?acao=excluir&id=<?=$usuario->getUsername()?>">Excluir</a>
+                                <a class="button is-small is-info" href="/index.php?acao=editar&id=<?=$usuario->getNome()?>">Editar</a>
+                                <a class="button is-small is-danger" href="/index.php?acao=excluir&id=<?=$usuario->getNome()?>">Excluir</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -34,4 +34,3 @@
             </tbody>
         </table>
     </div>
-    <?php require __DIR__ . "/footer.php"; ?>

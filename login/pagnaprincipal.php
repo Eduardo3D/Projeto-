@@ -226,10 +226,10 @@ img:nth-child(5) {
         </a>
 
         <div class="navbar-dropdown">
-          <a class="navbar-item has-text-white">
+          <a class="navbar-item has-text-white" href="criadores.php">
             Criadores
           </a>
-          <a class="navbar-item is-selected has-text-white">
+          <a class="navbar-item is-selected has-text-white" href="novo-Suporte.php">
             Contato
           </a>
           <a class="navbar-item has-text-white" href="login.php">
