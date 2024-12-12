@@ -1,5 +1,7 @@
 <?php
+require __DIR__."/User.php";
 
+use User;
 class UserBanco{
     private $pdo;
 
@@ -9,72 +11,74 @@ class UserBanco{
         $this->pdo = $banco;
     }
 
-    public function cadastrarUsuario($nome,$senha,$ativo){
-        $sql = "INSERT INTO usuarios(nome,senha,perfil_ativo) values (:n,:p,:a)";
+    public function cadastrarLogar($id,$nome,$email,$senha){
+        $sql = "INSERT INTO logar(id,nome,email,senha) values (:i,:n,:e,:s)";
 
         $comando = $this->pdo->prepare($sql);
-       
+        $comando->bindValue("i",$id);
         $comando->bindValue("n",$nome);
-        $comando->bindValue("p",$senha);
-        $comando->bindValue("a",$ativo,PDO::PARAM_BOOL);
+        $comando->bindValue("e",$email);
+        $comando->bindValue("s",$senha);
 
         return $comando->execute();
     }
 
-    public function editarUsuario($nome,$senha,$ativo){
-        $sql = "INSERT INTO usuarios(nome,senha,perfil_ativo) values (:n,:p,:a)";
+    public function editarLogar($id,$nome,$email,$senha){
+        $sql = "INSERT INTO logar(id,nome,email,senha) values (:i,:n,:e,:s)";
 
         $comando = $this->pdo->prepare($sql);
+        $comando->bindValue("i",$id);
         $comando->bindValue("n",$nome);
-        $comando->bindValue("p",$senha);
-        $comando->bindValue("a",$ativo,PDO::PARAM_BOOL);
+        $comando->bindValue("e",$email);
+        $comando->bindValue("s",$senha);
 
         return $comando->execute();
     }
 
-    public function buscarPorNome($n){
-        $sql = "SELECT * FROM usuarios WHERE nome=:n";
+    public function buscarPorId($i){
+        $sql = "SELECT * FROM logar WHERE id=:i";
 
         $comando = $this->pdo->prepare($sql);
-        $comando->bindValue("n",$n);
+        $comando->bindValue("i",$i);
         $comando->execute();
         $resultado = $comando->fetchAll(PDO::FETCH_ASSOC);
 
         return $this->hidratar($resultado);
     }
 
-    public function atualizarUsuario($nome,$senha,$ativo){
-        $sql = "UPDATE usuarios set nome = :n, senha = :p, perfil_ativo = :a where nome = :n";
+    public function atualizarLogar($id,$nome,$email,$senha){
+        $sql = "UPDATE logar set id = :i, nome = :n, email = :e, senha = :s, where nome = :n  ";
 
         $comando = $this->pdo->prepare($sql);
+        $comando->bindValue("i",$id);
         $comando->bindValue("n",$nome);
-        $comando->bindValue("p",$senha);
-        $comando->bindValue("a",$ativo,PDO::PARAM_BOOL);
+        $comando->bindValue("e",$email);
+        $comando->bindValue("s",$senha);
 
         return $comando->execute();
     }
 
-    public function excluirUsuario($nome){
-        $sql = "DELETE FROM usuarios WHERE nome = :n";
+    public function excluirLogar($id){
+        $sql = "DELETE FROM logar WHERE id = :i";
 
         $comando = $this->pdo->prepare($sql);
-        $comando->bindValue("n",$nome);
+        $comando->bindValue("i",$id);
 
         return $comando->execute();
     }
 
-    public function verificarSeExiste($nome,$senha){
-        $sql = "SELECT * FROM usuarios WHERE nome=:n and senha = :p and perfil_ativo = TRUE";
+    public function verificarSeExiste($logar,$nome){
+        $sql = "SELECT * FROM logar WHERE id=:i and nome = :n ";
         $comando = $this->pdo->prepare($sql);
+        $comando->bindValue("l",$logar);
         $comando->bindValue("n",$nome);
-        $comando->bindValue("p",$senha);
         $comando->execute();
 
         return $comando->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function listarUsuario(){
-        $sql = "SELECT * FROM usuarios";
+    public function listarLogar(){
+        $sql = "SELECT * FROM logar";
         $comando = $this->pdo->prepare($sql);
         
         $comando->execute();
@@ -88,9 +92,10 @@ class UserBanco{
 
         foreach($array as $dado){
             $objeto= new User();
+            $objeto->setId($dado['id']);
             $objeto->setNome($dado['nome']);
-            $objeto->setSenha($dado['senha']);
-            $objeto->setAtivo($dado['perfil_ativo']);
+            $objeto->setEmail($dado['email']);
+            $objeto->setsenha($dado['senha']);
             $todos[]=$objeto;
         }
         return $todos;
